@@ -14,18 +14,24 @@ class CNF:
     # def hasEpsilonProduction(variable: str):
     #     pass
 
-    # def findUnitProductionPair(self) -> dict[str,set[str]]:
-    #     result: dict[str,set[str]] = {}
-    #     for variable in self.productionRules:
-    #         result[variable] = variable
-
-    #     foundNew = True
-    #     while foundNew:
-    #         foundNew = False
-    #         for unitProduction in result:
-                
-
-    #     print(result)
+    def findUnitProductionPair(self) -> dict[str,set[str]]:
+        result: dict[str, set[str]] = {}
+        for variable in self.productionRules:
+            result[variable] = {variable}
+        
+        
+        foundNew = True
+        while foundNew:
+            foundNew = False
+            for unitProduction in result:
+                print(unitProduction)
+                for innerUnitProduction in result:
+                    checker: [str, str] = {unitProduction, innerUnitProduction}
+                    print(checker)
+                    if not (checker in result):
+                        result[variable] = {checker}
+        # print(result)
+           
 
 
 
