@@ -1,10 +1,16 @@
+variables: list[str] = ["S", "X", "Y", "A", "B", "C", "D"]
 
 # Production Rule
 # Dictionary<StringVariable, List<StringRule>>
 productionRule: dict[str, list[str]] = {
-    "P": ["0", "1", "0P0", "1P1"]
+    "S": ["XD", "AY"],
+    "X": ["aXc", "B"],
+    "Y": ["bYd", "C"],
+    "A": ["aA", "a"],
+    "B": ["bB", "b"],
+    "C": ["cC", "c"],
+    "D": ["dD", "d"]
 }
-
 
 # Instantenous Description
 # Tuple<StringState, StringStack, StringInput>
@@ -14,11 +20,14 @@ ID = tuple[str, str, str]
 # Queue of ID
 job: list[ID] = []
 
-def isJobEmpty():
-    return len(job) == 0
+startID: ID = ("p", "S", "aabbbbccccdddd")
 
-startID: ID = ("p", "P", "10101")
-
+def countTerminal(string: str) -> int:
+    count = 0
+    for c in string:
+        if not c in variables:
+            count += 1
+    return count
 
 def main():
     job.append(startID)
@@ -27,11 +36,15 @@ def main():
 
     while len(job) != 0:
         (state, stack, input) = job.pop(0)
+        # print(state, stack, "\t", input)
 
         if len(stack) == 0 or len(input) == 0:
             if len(stack) == 0 and len(input) == 0:
                 verdict = True
                 break
+            continue
+
+        if countTerminal(stack) > len(input):
             continue
 
         topStack = stack[0]
