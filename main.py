@@ -3,7 +3,7 @@ variables: list[str] = ["S", "X", "Y", "A", "B", "C", "D"]
 # Production Rule
 # Dictionary<StringVariable, List<StringRule>>
 productionRule: dict[str, list[str]] = {
-    "S": ["XD", "AY"],
+    "S": [["X", "Y"], "AY"],
     "X": ["aXc", "B"],
     "Y": ["bYd", "C"],
     "A": ["aA", "a"],
