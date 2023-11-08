@@ -1,15 +1,10 @@
-variables: list[str] = ["S", "X", "Y", "A", "B", "C", "D"]
+variables: list[str] = ["S","A"]
 
 # Production Rule
 # Dictionary<StringVariable, List<StringRule>>
-productionRule: dict[str, list[str]] = {
-    "S": [["X", "Y"], "AY"],
-    "X": ["aXc", "B"],
-    "Y": ["bYd", "C"],
-    "A": ["aA", "a"],
-    "B": ["bB", "b"],
-    "C": ["cC", "c"],
-    "D": ["dD", "d"]
+productionRule: dict[str, list[list[str]]] = {
+    "S": ["0S", "A"],
+    "A": ["1A", "1"],
 }
 
 # Instantenous Description
@@ -20,7 +15,7 @@ ID = tuple[str, str, str]
 # Queue of ID
 job: list[ID] = []
 
-startID: ID = ("p", "S", "aabbbbccccdddd")
+startID: ID = ("p", "S", "0011")
 
 def countTerminal(string: str) -> int:
     count = 0
