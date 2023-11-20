@@ -1,18 +1,14 @@
 import re
 
 def parse_html_tags(html):
-    # Regular expression to find HTML tags
     pattern = re.compile(r'<\s*([a-zA-Z0-9]+)(\s+[^>]*)?\s*>')
 
-    # Find all matches of the pattern in the HTML content
     matches = pattern.findall(html)
 
-    # Extract tag names from the matches
     tags = [match[0] for match in matches]
 
     return tags
 
-# Example HTML content
 html_content = '''
 <!DOCTYPE html>
 <html>
