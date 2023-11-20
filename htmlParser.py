@@ -1,33 +1,34 @@
-import re
+from bs4 import BeautifulSoup
 
-def parse_html_tags(html):
-    pattern = re.compile(r'<\s*([a-zA-Z0-9]+)(\s+[^>]*)?\s*>')
+def check_specific_tags(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            html_content = file.read()
+        soup = BeautifulSoup(html_content, 'html.parser')
 
-    matches = pattern.findall(html)
+        # Specific tags to check
+        specific_tags = [
+            'html', 'body', 'title', 'link', 'script', 'h1', 'h2', 'h3', 'h4', 'h5',
+            'h6', 'p', 'br', 'em', 'b', 'abbr', 'strong', 'small', 'hr', 'div', 'a',
+            'img', 'button', 'form', 'input', 'table', 'tr', 'td', 'th'
+        ]
 
-    tags = [match[0] for match in matches]
+        tags_array = []
 
-    return tags
+        for tag_name in specific_tags:
+            tag = soup.find(tag_name)
+            if tag:
+                opening_tag = f"<{tag_name}>"
+                closing_tag = f"</{tag_name}>"
+                tags_array.append(opening_tag)
+                tags_array.append(closing_tag)
 
-html_content = '''
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sample HTML</title>
-</head>
-<body>
-    <h1>Welcome</h1>
-    <p>This is a sample HTML document.</p>
-    <div>
-        <tr> 
-            <td> 
-            </td>
-        </tr>
-        <p>Nested paragraph.</p>
-    </div>
-</body>
-</html>
-'''
+        return tags_array
 
-tags_found = parse_html_tags(html_content)
-print("HTML Tags found:", tags_found)
+    except FileNotFoundError:
+        return "File not found."
+
+# Example usage
+file_path = 'test.html'  # Replace this with your HTML file path
+result = check_specific_tags(file_path)
+print(result)
