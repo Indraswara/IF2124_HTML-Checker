@@ -8,8 +8,8 @@ productionRule: dict[str, list[str]] = {
 
 # Instantenous Description
 # Tuple<StringState, StringStack, StringInput>
-ID = tuple[str, str, str]
 
+ID = tuple[str, str, str]
 # Job
 # Queue of ID
 job: list[ID] = []
@@ -17,10 +17,10 @@ job: list[ID] = []
 def isJobEmpty():
     return len(job) == 0
 
-startID: ID = ("p", "P", "10101")
 
-
-def main():
+startID: ID = ("p", "P", "10001")
+def main(a):
+    startID: ID = ("p", "P", a)
     job.append(startID)
 
     verdict: bool = False
@@ -48,8 +48,6 @@ def main():
                 job.append((state, production + restStack, topInput + restInput))
 
     if verdict:
-        print("Accepted")
+        return 1
     else:
-        print("Not Accepted")
-
-main()
+        return 0
