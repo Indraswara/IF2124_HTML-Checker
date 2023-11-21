@@ -1,0 +1,21 @@
+Q P F #total states 
+html head body title link script h1 h2 h3 h4 h5 h6 Q br em b abbr strong small hr div a img button form input table tr td th ws
+=======================
+Z Y #stack 
+Q # start symbols 
+Z # start stack
+F # accept states 
+F # E 
+Q a z Q YZ 
+(current state, read from word, take from stack, next state, add to stack)
+========================
+eps = \0
+ws = wide_space 
+tab = tab 
+
+Q < z0 Q < 
+Q h < Q h 
+Q t h Q t 
+Q m t Q m 
+Q l m Q l 
+ 
