@@ -1,0 +1,70 @@
+5 29 2   
+html head body title link script h1 h2 h3 h4 h5 h6 p br em b abbr strong small hr div a img button form input table tr td th  
+$ <html> <head> <body> <title> <link> <script> <h1> <h2> <h3> <h4> <h5> <h6> <p> <br> <em> <b> <abbr> <strong> <small> <hr> <div> <a> <img> <button> <form> <input> <table> <tr> <td> <th>  
+Q   
+$   
+F   
+F   
+Q html $ Q html $
+Q head $ Q head $
+Q body $ Q body $
+Q title $ Q title $
+Q link $ Q link $
+Q script $ Q script $
+Q h1 $ Q h1 $
+Q h2 $ Q h2 $
+Q h3 $ Q h3 $
+Q h4 $ Q h4 $
+Q h5 $ Q h5 $
+Q h6 $ Q h6 $
+Q p $ Q p $
+Q br $ Q br $
+Q em $ Q em $
+Q b $ Q b $
+Q abbr $ Q abbr $
+Q strong $ Q strong $
+Q small $ Q small $
+Q hr $ Q hr $
+Q div $ Q div $
+Q a $ Q a $
+Q img $ Q img $
+Q button $ Q button $
+Q form $ Q form $
+Q input $ Q input $
+Q table $ Q table $
+Q tr $ Q tr $
+Q td $ Q td $
+Q th $ Q th $
+Q e $ Q $
+Q e $ P $
+P html $ P $
+P head $ P $
+P body $ P $
+P title $ P $
+P link $ P $
+P script $ P $
+P h1 $ P $
+P h2 $ P $
+P h3 $ P $
+P h4 $ P $
+P h5 $ P $
+P h6 $ P $
+P p $ P $
+P br $ P $
+P em $ P $
+P b $ P $
+P abbr $ P $
+P strong $ P $
+P small $ P $
+P hr $ P $
+P div $ P $
+P a $ P $
+P img $ P $
+P button $ P $
+P form $ P $
+P input $ P $
+P table $ P $
+P tr $ P $
+P td $ P $
+P th $ P $
+P e $ F e
