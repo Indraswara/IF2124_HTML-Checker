@@ -28,7 +28,6 @@ class PDA:
         found = False
 
         while len(self.ids) != 0:
-            print(self.ids)
             [state, input, stack] = self.ids.pop(0)
 
             if len(stack) == 0:

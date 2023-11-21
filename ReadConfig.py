@@ -1,4 +1,3 @@
-import json
 from PDA import *
 rawConfig = open("pda.config", "r").read()
 lines = rawConfig.split("\n")
@@ -19,6 +18,10 @@ for line in lines:
     currentInput = symbols.pop(0)
     if currentInput == "\\eps":
         currentInput = EPS
+    elif currentInput == "\\space":
+        currentInput = " "
+    elif currentInput == "\\newline":
+        currentInput = "\n"
     currentStack = symbols.pop(0)
 
     nextState = symbols.pop(0)
@@ -38,6 +41,5 @@ for line in lines:
 
     rule.append((nextState, symbols))
 
-print(json.dumps(transition, indent=2))
 pda = PDA([], [], [], "q0", "Z0", transition)
-pda.start("1111101010110101011111")
+pda.start("01" * 10000 + "10" * 10000)
