@@ -13,9 +13,18 @@ eps = \0
 ws = wide_space 
 tab = tab 
 
-Q < z0 Q < 
-Q h < Q h 
-Q t h Q t 
-Q m t Q m 
-Q l m Q l 
- 
+Q \eps Z0 H < h t m l > < / h t m l > He 
+H < < H \eps 
+H h h H \eps 
+H t t H \eps 
+H m m H \eps 
+H l l H \eps 
+H > > H \eps 
+H < < H \eps 
+H / / H \eps 
+H h h H \eps 
+H t t H \eps 
+H m m H \eps 
+H l l H \eps 
+H > > H \eps 
+H \eps \eps Q Z0 
