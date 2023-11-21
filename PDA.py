@@ -1,84 +1,106 @@
-class PDA:
-    def __init__(self):
-        self.states = set()
-        self.input_symbols = set()
-        self.stack_symbols = set()
-        self.start_state = ''
-        self.start_stack = ''
-        self.accept_empty = False
-        self.transitions = {}
 
-    def set_start_state(self, state):
-        self.start_state = state
+StatePDA = str 
+StackPDA = str
+AlphabetPDA = str
+InputPDA = str 
 
-    def set_start_stack(self, stack_symbol):
-        self.start_stack = stack_symbol
+ID = tuple[StatePDA, InputPDA, list[StackPDA]]
 
-    def add_accept_state(self, state):
-        self.accept_states.add(state)
+# Transition.get(state).get(input).get(stack) = {(state, stack)}
+Transition = dict[StatePDA, dict[AlphabetPDA, dict[StackPDA, list[tuple[StatePDA, list[StackPDA]]]]]]
+eps = '\0'
 
-    def add_input_symbol(self, symbol):
-        self.input_symbols.add(symbol)
+transition: Transition = {
+    "q0": {
+        "0": {
+            "Z0": [("q0", ["0", "Z0"])],
+            "0": [("q0", ["0", "0"])],
+            "1": [("q0", ["0", "1"])],
+        },
+        "1": {
+            "Z0": [("q0", ["1", "Z0"])],
+            "0": [("q0", ["1", "0"])],
+            "1": [("q0", ["1", "1"])],
+        },
+        eps: {
+            "Z0": [("q1", ["Z0"])],
+            "0": [("q1", ["0"])],
+            "1": [("q1", ["1"])],
+        }
+    },
+    "q1": {
+        "0": {
+            "0": [("q1", [])],
+        },
+        "1": {
+            "1": [("q1", [])],
+        },
+        eps: {
+            "Z0": [("q1", [])]
+        }
+    },
+}
 
-    def add_stack_symbol(self, symbol):
-        self.stack_symbols.add(symbol)
+class PDA: 
+    ids: list[ID] = []
 
-    def add_transition(self, from_state, input_symbol, stack_symbol, to_state, stack_symbols_to_push):
-        if (from_state, input_symbol, stack_symbol) not in self.transitions:
-            self.transitions[(from_state, input_symbol, stack_symbol)] = []
-        self.transitions[(from_state, input_symbol, stack_symbol)].append((to_state, stack_symbols_to_push))
-
-
-    #unfinished
-    def validate_input(self, input_string):
-        stack = [self.start_stack]
-        current_state = self.start_state
-        index = 0
-
-        while index < len(input_string) or stack:
-
-            current_symbol = input_string[index] if index < len(input_string) else ''
-            top_of_stack = stack[-1]
-
-            
-            transitions = self.transitions.get((current_state, current_symbol, top_of_stack), [])
-
-            
-            if not transitions and (current_state, '', top_of_stack) in self.transitions:
-                transitions = self.transitions[(current_state, '', top_of_stack)]
-
-            if not transitions:
-                return False  
-
-            next_state, stack_symbols_to_push = transitions[0]  
-
-            stack.pop()  
-            if stack_symbols_to_push != '':
-                for symbol in stack_symbols_to_push[::-1]:
-                    stack.append(symbol)  
-
-            current_state = next_state
-            if index < len(input_string): 
-                index += 1
-
-        return current_state in self.accept_states
+    def __init__ (self, states: list[str], input: list[str], stack: list[str], startState:str, startStack: str, transitions: Transition): 
+        self.states = states 
+        self.stack = stack 
+        self.startState = startState  
+        self.startStack = startStack
+        self.transition = transition
     
-pda = PDA()
-pda.states = {'q', 'p'}
-pda.input_symbols = {'0', '1'}
-pda.stack_symbols = {'Z', 'X'}
-pda.start_state = 'q'
-pda.start_stack = 'Z'
-pda.accept_states = {'p'}
-pda.accept_empty = True
+    def start(self, input: InputPDA):
+        self.ids.append((self.startState, input, [self.startStack]))
+        self.process()
+    
+    def process(self):
+        found = False
 
-pda.add_transition('q', '0', 'Z', 'q', 'X')
-pda.add_transition('q', '0', 'X', 'q', 'XX')
-pda.add_transition('q', '1', 'X', 'q', 'X')
-pda.add_transition('q', 'e', 'X', 'p', '')
-pda.add_transition('p', 'e', 'X', 'p', '')
-pda.add_transition('p', '1', 'X', 'p', 'XX')
-pda.add_transition('p', '1', 'Z', 'p', '')
+        while len(self.ids) != 0:
+            print(self.ids)
+            [state, input, stack] = self.ids.pop(0)
 
-input_str = '010'
-print(f"{input_str} is: " + str(pda.validate_input(input_str)))  
+            if len(stack) == 0:
+                if len(input) == 0:
+                    found = True
+                continue
+
+            headStack = stack.pop(0)
+            tailStack = stack
+
+            try:
+                epsRules = self.transition.get(state).get(eps).get(headStack) # type: ignore
+                if epsRules == None:
+                    raise Exception()
+
+                for [nextState, nextStack] in epsRules:
+                    self.ids.append((nextState, input, nextStack + tailStack))
+            except:
+                ...
+
+            if len(input) == 0:
+                continue
+
+            headInput = input[0]
+            tailInput = input[1:]
+
+            try:
+                rules = self.transition.get(state).get(headInput).get(headStack) # type: ignore
+                if rules == None:
+                    raise Exception()
+
+                for [nextState, nextStack] in rules:
+                    self.ids.append((nextState, tailInput, nextStack + tailStack))
+
+            except:
+                ...
+        
+        if found:
+            print("Found")
+        else:
+            print("Not found")
+
+pda = PDA([], [], [], "q0", "Z0", transition)
+pda.start("1111101010110101011111")
