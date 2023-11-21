@@ -6,7 +6,6 @@ def check_specific_tags(file_path):
             html_content = file.read()
         soup = BeautifulSoup(html_content, 'html.parser')
 
-        # Specific tags to check
         specific_tags = [
             'html', 'body', 'title', 'link', 'script', 'h1', 'h2', 'h3', 'h4', 'h5',
             'h6', 'p', 'br', 'em', 'b', 'abbr', 'strong', 'small', 'hr', 'div', 'a',
@@ -20,15 +19,18 @@ def check_specific_tags(file_path):
             if tag:
                 opening_tag = f"<{tag_name}>"
                 closing_tag = f"</{tag_name}>"
+                # tags_array.append("<")
                 tags_array.append(opening_tag)
+                # tags_array.append(">")
+                # tags_array.append("<")
                 tags_array.append(closing_tag)
+                # tags_array.append(">")
 
         return tags_array
 
     except FileNotFoundError:
         return "File not found."
 
-# Example usage
-file_path = 'test.html'  # Replace this with your HTML file path
+file_path = 'test.html'  
 result = check_specific_tags(file_path)
 print(result)

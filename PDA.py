@@ -5,7 +5,6 @@ class PDA:
         self.stack_symbols = set()
         self.start_state = ''
         self.start_stack = ''
-        self.accept_states = set()
         self.accept_empty = False
         self.transitions = {}
 

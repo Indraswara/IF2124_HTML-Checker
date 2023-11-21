@@ -1,11 +1,7 @@
 start_input = ""
 found = False 
 accepted_config = [] 
-
-
 productions = {}
-
-
 acceptable_states = []
 
 
