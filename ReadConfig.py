@@ -1,4 +1,12 @@
 from PDA import *
+import re
+
+RE = re.compile("/\\((\\w+)\\s+(\\w+)\\s+(\\w+)\\)\\s+=\\s+(\\w+)\\s+\\|\\s+(.+)/gm")
+print(RE.match("(A B C) = A | A B C D"))
+
+print(
+)
+
 rawConfig = open("pda.config", "r").read()
 lines = rawConfig.split("\n")
 
@@ -12,19 +20,27 @@ isAcceptingState = lines.pop(0)
 
 transition: Transition = {}
 for line in lines:
-    symbols = line.split(" ")
+    if line == "" or line.startswith("#"):
+        continue
 
-    currentState = symbols.pop(0)
-    currentInput = symbols.pop(0)
+    matcher = re.match(r"\((\w+)\s+([\\\w]+)\s+(\w+)\)\s+=\s+(\w+)\s+\|\s?(.+)?", line)
+
+    if matcher == None:
+        continue
+    
+    print(matcher.groups())
+
+    currentState = matcher.group(1)
+    currentInput = matcher.group(2)
     if currentInput == "\\eps":
         currentInput = EPS
     elif currentInput == "\\space":
         currentInput = " "
     elif currentInput == "\\newline":
         currentInput = "\n"
-    currentStack = symbols.pop(0)
+    currentStack = matcher.group(3)
 
-    nextState = symbols.pop(0)
+    nextState = matcher.group(4)
 
     rule = transition
     if not currentState in rule:
@@ -39,7 +55,26 @@ for line in lines:
         rule[currentStack] = []
     rule = rule[currentStack]
 
-    rule.append((nextState, symbols))
+    stack = matcher.group(5)
+    if stack == None:
+        stack = ""
+    stack = stack.strip()
+    if stack == "":
+        stack = []
+    else:
+        stack = stack.strip().split(" ")
+    rule.append((nextState, stack))
 
-pda = PDA([], [], [], "q0", "Z0", transition)
-pda.start("01" * 10000 + "10" * 10000)
+print(transition)
+
+pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
+
+pda.start("""
+<html>
+    <head>
+    
+    </head>
+    <body>
+    </body>
+</html>
+""")
