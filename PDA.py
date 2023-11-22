@@ -11,11 +11,9 @@ Transition = dict[StatePDA, dict[AlphabetPDA, dict[StackPDA, list[tuple[StatePDA
 eps = '\0'
 
 transition: Transition = {
-    "q0": {
-        "0": {
-            "Z0": [("q0", ["0", "Z0"])],
-            "0": [("q0", ["0", "0"])],
-            "1": [("q0", ["0", "1"])],
+    "Q": {
+        eps: {
+            "Z0": [("H", ["<", "h", "t", "m", "l", ">", "<", "/", "h", "t", "m", "l", ">", "He"])],
         },
         "1": {
             "Z0": [("q0", ["1", "Z0"])],
