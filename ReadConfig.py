@@ -1,12 +1,6 @@
 from PDA import *
 import re
 
-RE = re.compile("/\\((\\w+)\\s+(\\w+)\\s+(\\w+)\\)\\s+=\\s+(\\w+)\\s+\\|\\s+(.+)/gm")
-print(RE.match("(A B C) = A | A B C D"))
-
-print(
-)
-
 rawConfig = open("pda.config", "r").read()
 lines = rawConfig.split("\n")
 
@@ -19,16 +13,17 @@ acceptingState = lines.pop(0).split(" ")
 isAcceptingState = lines.pop(0)
 
 transition: Transition = {}
+closure: list[tuple[StatePDA, InputPDA, StackPDA, StatePDA, list[StackPDA]]] = []
 for line in lines:
     if line == "" or line.startswith("#"):
         continue
 
-    matcher = re.match(r"\((\w+)\s+([\\\w]+)\s+(\w+)\)\s+=\s+(\w+)\s+\|\s?(.+)?", line)
+    matcher = re.match(r"\((\\?\$?\w+)\s+(\\?\$?\w+)\s+(\\?\$?\w+)\)\s+=\s+(\\?\$?\w+)\s+\|\s?(.+)?", line)
 
     if matcher == None:
         continue
     
-    print(matcher.groups())
+    # print(matcher.groups())
 
     currentState = matcher.group(1)
     currentInput = matcher.group(2)
@@ -55,24 +50,28 @@ for line in lines:
         rule[currentStack] = []
     rule = rule[currentStack]
 
-    stack = matcher.group(5)
-    if stack == None:
-        stack = ""
-    stack = stack.strip()
-    if stack == "":
-        stack = []
-    else:
-        stack = stack.strip().split(" ")
-    rule.append((nextState, stack))
+    rawStack = matcher.group(5)
+    if rawStack == None:
+        rawStack = ""
+    rawStack = rawStack.strip()
 
-print(transition)
+    nextStack: list[str] = []
+    if rawStack == "":
+        nextStack = []
+    else:
+        nextStack = rawStack.strip().split(" ")
+    
+    if currentInput.startswith("\\$") or currentStack.startswith("\\$") or nextState.startswith("\\$"):
+        closure.append((currentState, currentInput, currentStack, nextState, nextStack))
+        continue
+    rule.append((nextState, nextStack))
 
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
+# pda.start("aa")
 
 pda.start("""
 <html>
     <head>
-    
     </head>
     <body>
     </body>

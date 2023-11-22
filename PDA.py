@@ -26,13 +26,27 @@ class PDA:
         self.ids.append((self.startState, input, [self.startStack]))
         count = len(input)
 
+        maxJob = 0
         iteration = 0
+        # lastJobCount = 0
         while len(self.ids) != 0:
             iteration += 1
+
             # print(iteration)
             # for [j, id] in enumerate(self.ids):
-            #     print(j, id)
+            #     if j >= lastJobCount - 1:
+            #         print("<", end="")
+            #     if j == 0:
+            #         print(">", end="")
+            #     print("\t", end="")
+            #     print(j, id, end="")
+            #     print()
+            # lastJobCount = len(self.ids)
             # print()
+
+            if len(self.ids) > maxJob:
+                maxJob = len(self.ids)
+
             [state, input, stack] = self.ids.pop(0)
 
             if len(stack) == 0:
@@ -80,5 +94,5 @@ class PDA:
             print("Not found")
         
         if count:
-            print(count, iteration, f"{(iteration * 100) // count}%")
+            print(count, iteration, f"{(iteration * 100) // count}%", maxJob)
 
