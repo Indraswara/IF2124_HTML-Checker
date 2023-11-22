@@ -71,12 +71,15 @@ pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
 pda.start("""
 <html>
     <head>
-        <link / > 
+        <link rel="test" href="google.com"> 
         <script> </script>
         <title>
         </title>
     </head>
     <body>
+        <div>
+            <div></div>
+        </div>
     </body>
 </html>
 """)

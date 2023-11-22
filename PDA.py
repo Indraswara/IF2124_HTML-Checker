@@ -19,7 +19,23 @@ class PDA:
         self.startState = startState  
         self.startStack = startStack
         self.transition = transition
-    
+
+    def pushJob(self, id: ID):
+        [state, input, stack] = id
+        for t in self.ids:
+            [a, b, c] = t
+            if state == a and input == b:
+                match = True
+                if len(stack) != len(c):
+                    match = False
+                else:
+                    for [i, s] in enumerate(stack):
+                        if s != c[i]:
+                            match = False
+                            break
+                if match:
+                    return
+        self.ids.append(id)
     
     def start(self, input: InputPDA):
         found = False
@@ -32,7 +48,7 @@ class PDA:
         while len(self.ids) != 0:
             iteration += 1
 
-            if iteration % 100 == 0: 
+            if iteration % 1000 == 0: 
                 print(iteration)
                 for [j, id] in enumerate(self.ids):
                     if j >= lastJobCount - 1:
@@ -66,7 +82,7 @@ class PDA:
                     raise Exception()
 
                 for [nextState, nextStack] in epsRules:
-                    self.ids.append((nextState, input, nextStack + tailStack))
+                    self.pushJob((nextState, input, nextStack + tailStack))
             except:
                 ...
 
@@ -82,13 +98,13 @@ class PDA:
                     raise Exception()
 
                 for [nextState, nextStack] in rules:
-                    self.ids.append((nextState, tailInput, nextStack + tailStack))
+                    self.pushJob((nextState, tailInput, nextStack + tailStack))
 
             except:
                 ...
 
             if headInput == headStack and headStack in self.input:
-                self.ids.append((state, tailInput, tailStack))
+                self.pushJob((state, tailInput, tailStack))
         
         if found:
             print("Found")
