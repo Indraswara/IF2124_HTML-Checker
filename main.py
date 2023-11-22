@@ -1,32 +1,49 @@
-variables: list[str] = ["S","A"]
+import json
+import re
+from loader import loaderCNF
+from cnf import *
+
+cnf = loaderCNF
+
+variables: list[str] = cnf.variables
 
 # Production Rule
 # Dictionary<StringVariable, List<StringRule>>
-productionRule: dict[str, list[list[str]]] = {
-    "S": ["0S", "A"],
-    "A": ["1A", "1"],
-}
+productionRule: dict[str, list[list[str]]] = cnf.productionRules
 
 # Instantenous Description
 # Tuple<StringState, StringStack, StringInput>
+ID = tuple[str, list[str], list[str]]
 
-ID = tuple[str, str, str]
 # Job
 # Queue of ID
 job: list[ID] = []
 
-def isJobEmpty():
-    return len(job) == 0
+startID: ID = ("p", [cnf.startVariables], list("A -> a | aAa | aaaa | aaA \n                                    A -> a"))
 
+wait = input
 
-startID: ID = ("p", "P", "10001")
-def main(a):
-    startID: ID = ("p", "P", a)
+def formatID(id: ID):
+    (_, stack, input) = id
+    return '|'.join(stack) + "\t\t" + ''.join(input)
+
+def main():
     job.append(startID)
 
     verdict: bool = False
 
+    counter = 0
     while len(job) != 0:
+        counter += 1
+        print(counter)
+
+        # prompt = wait()
+        # if prompt == "":
+        #     f = open("demofile2.txt", "w")
+        #     output = list(map(formatID, job))
+        #     f.write("\n".join(output))
+        #     f.close()
+
         (state, stack, input) = job.pop(0)
         # print(state, stack, "\t", input)
 
@@ -50,7 +67,7 @@ def main(a):
                 job.append((state, restStack, restInput))
         else:
             for production in currentProductionRule:
-                job.append((state, production + restStack, topInput + restInput))
+                job.append((state, production + restStack, [topInput] + restInput))
 
     if verdict:
         return 1
