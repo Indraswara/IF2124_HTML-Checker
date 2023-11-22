@@ -32,17 +32,19 @@ class PDA:
         while len(self.ids) != 0:
             iteration += 1
 
-            print(iteration)
-            for [j, id] in enumerate(self.ids):
-                if j >= lastJobCount - 1:
-                    print("<", end="")
-                if j == 0:
-                    print(">", end="")
-                print("\t", end="")
-                print(j, id, end="")
+            if iteration % 100 == 0: 
+                print(iteration)
+                for [j, id] in enumerate(self.ids):
+                    if j >= lastJobCount - 1:
+                        print("<", end="")
+                    if j == 0:
+                        print(">", end="")
+                    print("\t", end="")
+                    print(j, id, end="")
+                    print()
+                    break
+                lastJobCount = len(self.ids)
                 print()
-            lastJobCount = len(self.ids)
-            print()
 
             if len(self.ids) > maxJob:
                 maxJob = len(self.ids)

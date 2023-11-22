@@ -1,7 +1,7 @@
 from PDA import *
 import re
 
-rawConfig = open("pda.config", "r").read()
+rawConfig = open("pdaRules.config", "r").read()
 lines = rawConfig.split("\n")
 
 statePDA = lines.pop(0).split(" ")
@@ -18,7 +18,7 @@ for line in lines:
     if line == "" or line.startswith("#"):
         continue
 
-    matcher = re.match(r"\((\\?\$?\w+)\s+(\\?\$?\w+)\s+(\\?\$?\w+)\)\s+=\s+(\\?\$?\w+)\s+\|\s?(.+)?", line)
+    matcher = re.match(r"\((\\?\$?\w+)\s+([^\s]+)\s+(\\?\$?\w+)\)\s+=\s+(\\?\$?\w+)\s+\|\s?(.+)?", line)
 
     if matcher == None:
         continue
@@ -67,17 +67,16 @@ for line in lines:
     rule.append((nextState, nextStack))
 
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
-# pda.start("aa")
 
 pda.start("""
 <html>
     <head>
+        <link / > 
+        <script> </script>
         <title>
         </title>
     </head>
     <body>
-        <div>
-        </div>
     </body>
 </html>
 """)
