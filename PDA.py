@@ -8,43 +8,14 @@ ID = tuple[StatePDA, InputPDA, list[StackPDA]]
 
 # Transition.get(state).get(input).get(stack) = {(state, stack)}
 Transition = dict[StatePDA, dict[AlphabetPDA, dict[StackPDA, list[tuple[StatePDA, list[StackPDA]]]]]]
-eps = '\0'
-
-transition: Transition = {
-    "Q": {
-        eps: {
-            "Z0": [("H", ["<", "h", "t", "m", "l", ">", "<", "/", "h", "t", "m", "l", ">", "He"])],
-        },
-        "1": {
-            "Z0": [("q0", ["1", "Z0"])],
-            "0": [("q0", ["1", "0"])],
-            "1": [("q0", ["1", "1"])],
-        },
-        eps: {
-            "Z0": [("q1", ["Z0"])],
-            "0": [("q1", ["0"])],
-            "1": [("q1", ["1"])],
-        }
-    },
-    "q1": {
-        "0": {
-            "0": [("q1", [])],
-        },
-        "1": {
-            "1": [("q1", [])],
-        },
-        eps: {
-            "Z0": [("q1", [])]
-        }
-    },
-}
-
+EPS = '\0'
 class PDA: 
     ids: list[ID] = []
 
-    def __init__ (self, states: list[str], input: list[str], stack: list[str], startState:str, startStack: str, transitions: Transition): 
+    def __init__ (self, states: list[str], input: list[str], stack: list[str], startState:str, startStack: str, transition: Transition): 
         self.states = states 
         self.stack = stack 
+        self.input = input
         self.startState = startState  
         self.startStack = startStack
         self.transition = transition
@@ -69,7 +40,7 @@ class PDA:
             tailStack = stack
 
             try:
-                epsRules = self.transition.get(state).get(eps).get(headStack) # type: ignore
+                epsRules = self.transition.get(state).get(EPS).get(headStack) # type: ignore
                 if epsRules == None:
                     raise Exception()
 
@@ -100,5 +71,3 @@ class PDA:
         else:
             print("Not found")
 
-pda = PDA([], [], [], "q0", "Z0", transition)
-pda.start("1111101010110101011111")

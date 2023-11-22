@@ -1,0 +1,2 @@
+*S		A -> a | aAa | aaaa | aaA 
+ A -> a
