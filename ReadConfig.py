@@ -1,6 +1,7 @@
-import json
 from PDA import *
-rawConfig = open("pda.config", "r").read()
+import re
+
+rawConfig = open("pdaRulesIndra.config", "r").read()
 lines = rawConfig.split("\n")
 
 statePDA = lines.pop(0).split(" ")
@@ -12,16 +13,29 @@ acceptingState = lines.pop(0).split(" ")
 isAcceptingState = lines.pop(0)
 
 transition: Transition = {}
+closure: list[tuple[StatePDA, InputPDA, StackPDA, StatePDA, list[StackPDA]]] = []
 for line in lines:
-    symbols = line.split(" ")
+    if line == "" or line.startswith("#"):
+        continue
 
-    currentState = symbols.pop(0)
-    currentInput = symbols.pop(0)
+    matcher = re.match(r"\((\\?\$?\w+)\s+([^\s]+)\s+(\\?\$?\w+)\)\s+=\s+(\\?\$?\w+)\s+\|\s?(.+)?", line)
+
+    if matcher == None:
+        continue
+    
+    # print(matcher.groups())
+
+    currentState = matcher.group(1)
+    currentInput = matcher.group(2)
     if currentInput == "\\eps":
         currentInput = EPS
-    currentStack = symbols.pop(0)
+    elif currentInput == "\\space":
+        currentInput = " "
+    elif currentInput == "\\newline":
+        currentInput = "\n"
+    currentStack = matcher.group(3)
 
-    nextState = symbols.pop(0)
+    nextState = matcher.group(4)
 
     rule = transition
     if not currentState in rule:
@@ -36,8 +50,43 @@ for line in lines:
         rule[currentStack] = []
     rule = rule[currentStack]
 
-    rule.append((nextState, symbols))
+    rawStack = matcher.group(5)
+    if rawStack == None:
+        rawStack = ""
+    rawStack = rawStack.strip()
 
-print(json.dumps(transition, indent=2))
-pda = PDA([], [], [], "q0", "Z0", transition)
-pda.start("1111101010110101011111")
+    nextStack: list[str] = []
+    if rawStack == "":
+        nextStack = []
+    else:
+        nextStack = rawStack.strip().split(" ")
+    
+    if currentInput.startswith("\\$") or currentStack.startswith("\\$") or nextState.startswith("\\$"):
+        closure.append((currentState, currentInput, currentStack, nextState, nextStack))
+        continue
+    rule.append((nextState, nextStack))
+
+pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
+
+pda.start("""
+<html>
+    <head>
+        <link rel="test" href="google.com"> 
+        <script> </script>
+        <title>
+        </title>
+    </head>
+    <body>
+        <div>
+          <div>
+            <h1> abcdefghi </h1>
+            <h2> </h2>
+            <h3> </h3>
+            <h4> </h4>
+            <h5> </h5>
+            <h6> </h6>
+          </div>
+        </div>
+    </body>
+</html>
+""")
