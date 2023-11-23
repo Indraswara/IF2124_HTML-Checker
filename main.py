@@ -1,5 +1,3 @@
-import json
-import re
 from loader import loaderCNF
 from cnf import *
 

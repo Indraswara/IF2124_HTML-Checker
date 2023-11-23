@@ -72,15 +72,23 @@ pda.start("""
 <html>
     <head>
         <link rel="test" href="google.com"> 
-        <script> </script>
-        <title>
-        </title>
     </head>
     <body>
-        <div>
-            <div></div>
-        </div>
-        <table></table>
+        <input type="text"/>
+          <table>
+            <th>
+                <td>2</td>
+                <td>3</td>
+                <td>5</td>
+            </th>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>5</td>
+            </tr>
+            <tr></tr>
+        </table>
     </body>
 </html>
 """)
