@@ -80,6 +80,7 @@ pda.start("""
         <div>
             <div></div>
         </div>
+        <table></table>
     </body>
 </html>
 """)

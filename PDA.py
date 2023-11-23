@@ -48,7 +48,7 @@ class PDA:
         while len(self.ids) != 0:
             iteration += 1
 
-            if iteration % 1000 == 0: 
+            if False: 
                 print(iteration)
                 for [j, id] in enumerate(self.ids):
                     if j >= lastJobCount - 1:
