@@ -1,7 +1,7 @@
 from PDA import *
 import re
 
-rawConfig = open("pdaRules.config", "r").read()
+rawConfig = open("pdaRulesAfif.config", "r").read()
 lines = rawConfig.split("\n")
 
 statePDA = lines.pop(0).split(" ")
@@ -77,10 +77,24 @@ pda.start("""
         </title>
     </head>
     <body>
+        <input type="text"/>
         <div>
             <div></div>
         </div>
-        <table></table>
+        <table>
+            <th>
+                <td>2</td>
+                <td>3</td>
+                <td>5</td>
+            </th>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>5</td>
+            </tr>
+            <tr></tr>
+        </table>
     </body>
 </html>
 """)
