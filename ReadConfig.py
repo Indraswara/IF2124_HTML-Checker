@@ -1,7 +1,7 @@
 from PDA import *
 import re
 
-rawConfig = open("pdaRules.config", "r").read()
+rawConfig = open("pdaRulesNopal.config", "r").read()
 lines = rawConfig.split("\n")
 
 statePDA = lines.pop(0).split(" ")
@@ -74,6 +74,9 @@ pda.start("""
         <link rel="test" href="google.com"> 
     </head>
     <body>
+        <div>
+            <p>w</p>
+        </div>
         <input type="text"/>
           <table>
             <th>
