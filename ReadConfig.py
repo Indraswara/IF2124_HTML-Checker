@@ -1,7 +1,7 @@
 from PDA import *
 import re
 
-rawConfig = open("pdaRulesIndra.config", "r").read()
+rawConfig = open("pdaRules.config", "r").read()
 lines = rawConfig.split("\n")
 
 statePDA = lines.pop(0).split(" ")
@@ -72,21 +72,23 @@ pda.start("""
 <html>
     <head>
         <link rel="test" href="google.com"> 
-        <script> </script>
-        <title>
-        </title>
     </head>
     <body>
-        <div>
-          <div>
-            <h1> abcdefghi </h1>
-            <h2> </h2>
-            <h3> </h3>
-            <h4> </h4>
-            <h5> </h5>
-            <h6> </h6>
-          </div>
-        </div>
+        <input type="text"/>
+          <table>
+            <th>
+                <td>2</td>
+                <td>3</td>
+                <td>5</td>
+            </th>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>5</td>
+            </tr>
+            <tr></tr>
+        </table>
     </body>
 </html>
 """)
