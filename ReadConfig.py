@@ -1,7 +1,7 @@
 from PDA import *
 import re
 
-rawConfig = open("pdaRulesNopal.config", "r").read()
+rawConfig = open("pdaRulesAfif.config", "r").read()
 lines = rawConfig.split("\n")
 
 statePDA = lines.pop(0).split(" ")
@@ -67,7 +67,6 @@ for line in lines:
     rule.append((nextState, nextStack))
 
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
-
 pda.start("""
 <html>
     <head>
@@ -92,6 +91,8 @@ pda.start("""
             </tr>
             <tr></tr>
         </table>
+        <h1>fjkdsl f</h1>
+        <h2>fjkdsl f</h2>
     </body>
 </html>
 """)
