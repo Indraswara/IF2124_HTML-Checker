@@ -74,15 +74,8 @@ pda.start("""
     </head>
     <body>
         <div>
-          <p>   vn b bm</p>
-            <img src   =   "google.com" alt =      "random" />
-            <form action   =  "word" method      =   "get"> </form> 
-            <input type =     "password" />
-            <a>kwowok</a>
-            <hr>
-            <p>w</p>
+          <p>       </p>
         </div>
-        <button>oloh</button>
     </body>
 </html>
 """)
