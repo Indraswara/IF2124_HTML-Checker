@@ -68,29 +68,12 @@ for line in lines:
 
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
 pda.start("""
-<html>
-    <head>
-        <link rel="test" href="google.com"> 
-    </head>
-    <body>
-        <input type="text"/>
-          <table>
-            <th>
-                <td>2</td>
-                <td>3</td>
-                <td>5</td>
-            </th>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>5</td>
-            </tr>
-            <tr></tr>
-        </table>
-        <input type="textt" />
-        <h1>fjkdsl f</h1>
-        <h2>fjkdsl f</h2>
-    </body>
+<html> 
+  <head> 
+    <title>Simple Webpage</title> 
+  </head>
+  <body> 
+    <h1>Hello, World!</h1>
+  </body>
 </html>
 """)
