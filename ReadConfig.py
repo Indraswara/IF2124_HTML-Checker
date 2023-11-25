@@ -73,7 +73,7 @@ pda.start("""
     <title>Simple Webpage</title> 
   </head>
   <body> 
-    <img src="fjkdlsfj" />
+    <img src="fjkdlsfj"/>
   </body>
 </html>
 """)
