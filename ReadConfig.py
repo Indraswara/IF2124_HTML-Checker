@@ -67,15 +67,14 @@ for line in lines:
     rule.append((nextState, nextStack))
 
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
+
 pda.start("""
 <html>
     <head>
         <link rel="test" href="google.com"> 
     </head>
     <body>
-        <div>
-          <p>       </p>
-        </div>
+    <em>aaaaaaaaaaaaaaaaaaaaaa<em>afdsafd<em>fdsa<em>fsdf </em>fjdsf </em><em> </em> </em>aaaaaaaaaaaaaaaaaa</em>
     </body>
 </html>
 """)
