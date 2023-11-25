@@ -1,7 +1,7 @@
 from PDA import *
 import re
 
-rawConfig = open("pdaRules.config", "r").read()
+rawConfig = open("pdaRulesNopal.config", "r").read()
 lines = rawConfig.split("\n")
 
 statePDA = lines.pop(0).split(" ")
@@ -74,26 +74,45 @@ pda.start("""
     </head>
     <body>
         <div>
-            <p>w</p>
+          <a>halo gais</a>
+          <hr>
+          <p>ini ucok baba</p>
         </div>
-        <input type="text"/>
-          <table>
-            <th>
-                <td>2</td>
-                <td>3</td>
-                <td>5</td>
-            </th>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>5</td>
-            </tr>
-            <tr></tr>
-        </table>
-        <input type="textt" />
+        <div>
+          <button>ini tombol ucok</button>
+        </div>
+        <input type="text" />
         <h1>fjkdsl f</h1>
         <h2>fjkdsl f</h2>
     </body>
 </html>
 """)
+
+# <html>
+#     <head>
+#         <link rel="test" href="google.com"> 
+#     </head>
+#     <body>
+#         <div>
+#           <p>w</p>
+#         </div>
+#         <input type="text"/>
+#           <table>
+#             <th>
+#                 <td>2</td>
+#                 <td>3</td>
+#                 <td>5</td>
+#             </th>
+#             <tr>
+#                 <td>1</td>
+#                 <td>2</td>
+#                 <td>3</td>
+#                 <td>5</td>
+#             </tr>
+#             <tr></tr>
+#         </table>
+#         <input type="text" />
+#         <h1>fjkdsl f</h1>
+#         <h2>fjkdsl f</h2>
+#     </body>
+# </html>
