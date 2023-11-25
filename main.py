@@ -43,11 +43,15 @@ def main():
         #     f.close()
 
         (state, stack, input) = job.pop(0)
+        # print(state, stack, "\t", input)
 
         if len(stack) == 0 or len(input) == 0:
             if len(stack) == 0 and len(input) == 0:
                 verdict = True
                 break
+            continue
+
+        if countTerminal(stack) > len(input):
             continue
 
         topStack = stack[0]

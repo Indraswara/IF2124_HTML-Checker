@@ -74,14 +74,11 @@ pda.start("""
     </head>
     <body>
         <div>
-        <strong></strong>
-        <em> test satu dua tiga</em> 
-        <abbr> test dua emapt</abbr>
-        <b> bold </b> 
-        <small></small>
+            <a>kwowok</a>
+            <hr>
+            <p>w</p>
         </div>
-        <input type="text"/>
-        <h2>fjkdsl f</h2>
+        <button>oloh</button>
     </body>
 </html>
 """)
