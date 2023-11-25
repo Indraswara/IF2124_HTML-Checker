@@ -1,7 +1,7 @@
 from PDA import *
 import re
 
-rawConfig = open("pdaRulesAfif.config", "r").read()
+rawConfig = open("pdaRules.config", "r").read()
 lines = rawConfig.split("\n")
 
 statePDA = lines.pop(0).split(" ")
@@ -91,6 +91,7 @@ pda.start("""
             </tr>
             <tr></tr>
         </table>
+        <input type="textt" />
         <h1>fjkdsl f</h1>
         <h2>fjkdsl f</h2>
     </body>
