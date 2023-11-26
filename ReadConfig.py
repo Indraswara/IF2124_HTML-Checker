@@ -80,7 +80,7 @@ pda.start("""
 
 <h1>The script element</h1>
 
-<p id="demo">
+<p id="demo"></p>
 
 </body>
 </html>
