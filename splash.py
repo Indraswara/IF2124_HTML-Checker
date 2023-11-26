@@ -1,6 +1,6 @@
 import argparse
 from colorama import Fore, Style
-from ReadConfig import *
+from ReadConfigNopal import *
 
 # parser
 parser = argparse.ArgumentParser()
