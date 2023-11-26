@@ -72,16 +72,23 @@ pda.start("""
 <html>
 <head> 
   <title>Simple Webpage</title>
-  <script>
-    document.getElementById("demo").innerHTML = "Hello JavaScript!";
-  </script> 
+
 </head>
 <body>
 
-<h1>The script element</h1>
+<h2>HTML Forms</h2>
 
-<p id="demo"></p>
+<form action="/action_page.php" method="post">
+  <h5 class="label">First name:</h5><br>
+  <input type="text" id="fname"><br>
+  <h5 class="label">Last name:</h5><br>
+  <input type="text" id="lname"><br><br>
+  <button type="submit">Submit</button>
+</form> 
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
 
 </body>
 </html>
+
 """)
