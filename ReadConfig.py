@@ -95,7 +95,7 @@ pda.start("""
                                 </div>
                                 <diV>
                                 <DIV> 
-                                    <p> Ini stress tress kami paling brutal silakan dicoba </P>
+                                    <p> Ini stress tress kami paling "brutal" silakan dicoba </P>
 
                                     <H5 id = "Yakinkamumas"> Cepet mas kerJain!!!! < /h5>
                                 </dIV>
