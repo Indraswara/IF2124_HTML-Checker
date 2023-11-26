@@ -22,17 +22,12 @@ print(f'''{Fore.CYAN}
 /_/ /_/ /_/ /_/  /_/_____/     \____/_/ /_/_____/\____/_/ |_/_____/_/ |_| 
 {Style.RESET_ALL}''')
 
-# display
+# wait screen
+print("PDA file     : ",pda_file)
+print("HTML file    : ",html_file)
 print(Fore.YELLOW + f"Checking {html_file}, please wait..." + Style.RESET_ALL)
 
 # proses cek file html
 with open(html_file, 'r') as file:
-    file_contents = file.read()
-# print(file_contents) #delete
-pda.start(file_contents)
-
-isAccepted = True
-if isAccepted:
-    print(Fore.GREEN + "\nAccepted\n"+ Style.RESET_ALL)
-else:
-    print(Fore.RED + "\nRejected\nSyntax Error\n"+ Style.RESET_ALL)
+    html_file_contents = file.read()
+checkPDA(pda_file,html_file_contents)
