@@ -48,7 +48,7 @@ class PDA:
         while len(self.ids) != 0:
             iteration += 1
 
-            if iteration % 100 == 0 and False:
+            if iteration % 100 == 0 or True:
                 print(iteration)
                 for [j, id] in enumerate(self.ids):
                     if j >= lastJobCount - 1:
@@ -103,9 +103,6 @@ class PDA:
             except:
                 ...
 
-            if headInput == headStack and headStack in self.input:
-                self.pushJob((state, tailInput, tailStack))
-        
         if found:
             print("Found")
         else:

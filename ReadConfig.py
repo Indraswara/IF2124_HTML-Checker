@@ -18,7 +18,7 @@ for line in lines:
     if line == "" or line.startswith("#"):
         continue
 
-    matcher = re.match(r"\((\\?\$?\w+)\s+([^\s]+)\s+(\\?\$?\w+)\)\s+=\s+(\\?\$?\w+)\s+\|\s?(.+)?", line)
+    matcher = re.match(r"\((\\?\$?\w+)\s+([^\s]+)\s+([^\s]+)\)\s+=\s+(\\?\$?\w+)\s+\|\s?(.+)?", line)
 
     if matcher == None:
         continue
@@ -67,7 +67,6 @@ for line in lines:
     rule.append((nextState, nextStack))
 
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
-
 pda.start("""
 <htMl>
     <hEad> 
@@ -87,7 +86,7 @@ pda.start("""
 
         <H1> <Em> fjdklf </eM> </h1>
 
-        < fOrm >< / foRm >
+        < form >< / foRm >
         < imG sRc="fdjsklf" Alt = "FJDLKF" />
 
         < sCriPt sRc = "fjsdlf" > < / scRIpt>
