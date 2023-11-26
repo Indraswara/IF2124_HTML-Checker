@@ -112,7 +112,7 @@ class PDA:
 
         if count:
             print(f"Character count\t\t\t: {count}")
-            print(f"Iteration count\t\t\t: {count}")
+            print(f"Iteration count\t\t\t: {iteration}")
             print(f"Itaration/Character Ratio\t: {(iteration * 100) // count}%")
             print(f"Maximum ID count\t\t: {maxJob}")
             execTime = format(time.time() - start, ".4f")
