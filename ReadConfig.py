@@ -68,35 +68,56 @@ for line in lines:
 
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
 pda.start("""
-<htMl>
-    <hEad> 
-        < tiTle >Simple Webpage< / title >
-        <link rEl = "fjdklf" hReF="Fjdkfl" />
-    </heAd>
-    < Body >
-        <dIv></div>
-        <taBle>
-            <TH> </TH>
-            <tR>
-                <tD></Td>
-            </Tr>
-        </table>
+<   html > 
+    <head>
+    <script> ini random () banget tcuy #$%^ </script>
+    <tiTlE> ini title random tcuy </titLe>
+    </HeAd> 
+    <BodY> 
+        <H1 class = "ini Checker yang kami buat"      
+          > ini judul H1 # </h1>
+        <p> masukkan inputmu disini atau Rating Kami</P>
+        <input type = "password" id = "harus" class = "harus kamu isi kalo gak aku hantuin!!!!!!" />
+        <form method = "GET" class = "ini adalah method"> </form>
+        < p id = "momen()"><em> ini momen bjir</Em> </P>
+        <p id = "$%^&*#@"> <strong id = "@#$%^&"> Ini #$%</strong> </P>
+          <div id = "momen"> 
+            <Div id = "showoff">
+                <dIv id = "brutal">
+                    <dIv id = "psikopat">
+                        <DiV id = "Manayangnulis"       
+                            >
+                            <DIv id = "HTML">
+                                <div class = "Begini BJIR BJIR BJIR BJIR bjir">
+                                    <p>
+                                        <Em> this is FORMATED TEXT</eM>
+                                    </P>
+                                </div>
+                                <diV>
+                                <DIV> 
+                                    <p> Ini stress tress kami paling brutal silakan dicoba </P>
 
-        <Input TyPe="TeXT" / >
-
-        <H1> <Em> fjdklf </eM> </h1>
-
-        < form >< / foRm >
-        < imG sRc="fdjsklf" Alt = "FJDLKF" />
-
-        < sCriPt sRc = "fjsdlf" > < / scRIpt>
-
-        < bUtton type="suBmit" ></buTTon>
-
-        <A href="fjkdlfj" iD="fjdk" ></a>
-
-        <HR/>
-    </body>
-</html>
-
+                                    <H5 id = "Yakinkamumas"> Cepet mas kerJain!!!! < /h5>
+                                </dIV>
+                                    <p> </P>
+                                    <tabLe>
+                                        <tr>
+                                        <td>
+                                            <b><ABBR> Ini SH 0W 0Ff!!!!!!%$#^&*@ </AbbR></B>
+                                        </td>
+                                        </tr>
+                                        <th>
+                                        <td>
+                                        </td>
+                                        </th>
+                                    </TaBlE>
+                                </DIv>
+                            </DIv>
+                        </DIv>
+                    </div>
+                </diV>
+            </diV>
+          </diV>
+    </BOdY>
+< /html    >
 """)
