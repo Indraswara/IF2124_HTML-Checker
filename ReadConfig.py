@@ -1,7 +1,7 @@
 from PDA import *
 import re
 
-rawConfig = open("pdaRules-indra.config", "r").read()
+rawConfig = open("pdaRulesAfif.config", "r").read()
 lines = rawConfig.split("\n")
 
 statePDA = lines.pop(0).split(" ")
@@ -72,18 +72,9 @@ pda.start("""
 <html> 
   <head> 
     <title>Simple Webpage</title> 
+    <link rel="jfkdlfj" id="FJDKLF" />
   </head>
   <body> 
-    <!-- Bagian utama web -->
-    <h1>Hello, World!</h1>
-    <h2>Welcome to my page</h2>
-    <hr>
-    <img src="./welcome.jpeg" alt="Welcome Banner"> 
-    <p>This is a <em>simple</em> webpage.</p> 
-
-
-    <!-- Custom element -->
-    <div> This is the end of the page </div>
   </body>
 </html>
 
