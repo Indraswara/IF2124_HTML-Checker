@@ -69,27 +69,19 @@ for line in lines:
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
 
 pda.start("""
-<html id = "itbMahal"> 
-  <head id="smurf"> 
-    <title>Simple Webpage</title> 
-  </head>
-  <body id = "mantap"> 
-    <script>sjsj</script>
-    <!-- Bagian utama web -->
-    <table id = "smurf" class = "ucok">
-        <th id = "smurf" class = "ucok">
-            <td id = "smurf" class = "ucok"></td>
-        </th>
-        <tr >
-            <td></td>
-        </tr>
-    </table>
-    <img src="./welcome.jpeg" alt="Welcome Banner"> 
-    <p id="IFASIK">This is a <em id = "smurf" class = "ucok">simple</em> webpage.</p> 
-    <!-- Custom element -->
-    <div id = "smurf" class = "ucok"> This is the end of the page </div>
-  </body>
+<html>
+<head> 
+  <title>Simple Webpage</title>
+  <script>
+    document.getElementById("demo").innerHTML = "Hello JavaScript!";
+  </script> 
+</head>
+<body>
+
+<h1>The script element</h1>
+
+<p id="demo">
+
+</body>
 </html>
-
-
 """)
