@@ -58,7 +58,7 @@ class PDA:
                     print("\t", end="")
                     print(j, id, end="")
                     print()
-                    # break
+                    break
                 lastJobCount = len(self.ids)
                 print()
 
