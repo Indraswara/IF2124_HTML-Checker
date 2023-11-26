@@ -74,8 +74,8 @@ pda.start("""
         <link rel="test" href="google.com"> 
     </head>
     <body>
-    <em>aaaaaaaaaaaaaaaaaaaaaa<em>afdsafd<em>fd      sa<em>fsdf </em>fj<em></em>    dsf </em><em> </em> </em>aaaaaaaaaaaaaaaaaa</em>
-          <h1><em> <b>Ini</b> <em>testin </em> <strong> </strong><abbr> <b>ini</b> abbr </abbr> </em></h1>
+        <form id="fjkdslfj"    class="fjkds lfj" style="display: block" method="get" action="fjdslkfj" ></form>
+        <img src="fjdkslfj" id="FKDLF" class="jfdsl" />
     </body>
 </html>
 """)
