@@ -26,6 +26,7 @@ Program <strong> HTML Checker <strong>
 
 ## Screenshots <a href="screenshots"></a>
 ![Example screenshot](./img/img1.png)
+![Example screenshot](./img/img2.png)
 
 
 ## Setup <a href="setup"></a>
@@ -39,3 +40,15 @@ Program <strong> HTML Checker <strong>
     python main.py pda.txt "file.html"
     ```
     dan ganti "file.html" dengan file HTML yang ingin dicek
+
+
+## Configuration Format
+```
+Q Z
+(P I S) = R | T U
+...
+```
+Konfigurasi file dimulai dari start state (`Q`) dan start stack (`Z`). Kemudian untuk seluruh stack dan input karakter tidak perlu dituliskan secara eksplisit. Pada baris kedua dan seterusnya, berisi dengan transiton function dengan format seperti pada baris kedua contoh di atas. Apabila sebuah baris diawali dengan `#` atau tidak sesuai dengan format baris kedua di atas, maka baris tersebut akan diabaikan. `P` adalah state input, `I` adalah input karakter, `S` adalah top stack. Sedangkan pada sisi sebelah kanan `R` adalah nested dan `T U` adalah state selanjutnya yang dipisahkan oleh spasi. Berikut merupakan karakter khusus yang dapat digunakan pada `I`:
+1. `\newline`
+2. `\space`
+3. `\eps` (epsilon)
