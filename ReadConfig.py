@@ -1,7 +1,7 @@
 from PDA import *
 import re
 
-rawConfig = open("pdaRules-indra.config", "r").read()
+rawConfig = open("pdaRulesV2.config", "r").read()
 lines = rawConfig.split("\n")
 
 statePDA = lines.pop(0).split(" ")
@@ -68,7 +68,7 @@ for line in lines:
 
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
 pda.start("""
-<   html > 
+<html > 
     <head>
     <script> ini random () banget tcuy #$%^ </script>
     <tiTlE> ini title random tcuy </titLe>
@@ -79,7 +79,7 @@ pda.start("""
         <p> masukkan inputmu disini atau Rating Kami</P>
         <input type = "password" id = "harus" class = "harus kamu isi kalo gak aku hantuin!!!!!!" />
         <form method = "GET" class = "ini adalah method"> </form>
-        < p id = "momen()"><em> ini momen bjir</Em> </P>
+        <p id = "momen()"><em> ini momen bjir</Em> </P>
         <p id = "$%^&*#@"> <strong id = "@#$%^&"> Ini #$%</strong> </P>
           <div id = "momen"> 
             <Div id = "showoff">
@@ -97,7 +97,7 @@ pda.start("""
                                 <DIV> 
                                     <p> Ini stress tress kami paling "brutal" silakan dicoba </P>
 
-                                    <H5 id = "Yakinkamumas"> Cepet mas kerJain!!!! < /h5>
+                                    <H5 id = "Yakinkamumas"> Cepet mas kerJain!!!! </h5>
                                 </dIV>
                                     <p> </P>
                                     <tabLe>
@@ -119,5 +119,5 @@ pda.start("""
             </diV>
           </diV>
     </BOdY>
-< /html    >
+</html    >
 """)
