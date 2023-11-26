@@ -1,7 +1,7 @@
 from PDA import *
 import re
 
-rawConfig = open("pdaRulesV2.config", "r").read()
+rawConfig = open("pdaRulesV3.config", "r").read()
 lines = rawConfig.split("\n")
 
 statePDA = lines.pop(0).split(" ")
@@ -68,56 +68,19 @@ for line in lines:
 
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
 pda.start("""
-<html > 
+<html>
     <head>
-    <script> ini random () banget tcuy #$%^ </script>
-    <tiTlE> ini title random tcuy </titLe>
-    </HeAd> 
-    <BodY> 
-        <H1 class = "ini Checker yang kami buat"      
-          > ini judul H1 # </h1>
-        <p> masukkan inputmu disini atau Rating Kami</P>
-        <input type = "password" id = "harus" class = "harus kamu isi kalo gak aku hantuin!!!!!!" />
-        <form method = "GET" class = "ini adalah method"> </form>
-        <p id = "momen()"><em> ini momen bjir</Em> </P>
-        <p id = "$%^&*#@"> <strong id = "@#$%^&"> Ini #$%</strong> </P>
-          <div id = "momen"> 
-            <Div id = "showoff">
-                <dIv id = "brutal">
-                    <dIv id = "psikopat">
-                        <DiV id = "Manayangnulis"       
-                            >
-                            <DIv id = "HTML">
-                                <div class = "Begini BJIR BJIR BJIR BJIR bjir">
-                                    <p>
-                                        <Em> this is FORMATED TEXT</eM>
-                                    </P>
-                                </div>
-                                <diV>
-                                <DIV> 
-                                    <p> Ini stress tress kami paling "brutal" silakan dicoba </P>
+        <title>Simple Webpage</title>
+        <script>
+            document.getElementById("demo").innerHTML = "Hello JavaScript!";
+        </script>
+    </head>
+    <body>
+        <h1>The script element</h1>
+        <a>Not going anywhere</a><br>
+        <a href="https://www.google.co.id/">Might send you somewhere</a>
 
-                                    <H5 id = "Yakinkamumas"> Cepet mas kerJain!!!! </h5>
-                                </dIV>
-                                    <p> </P>
-                                    <tabLe>
-                                        <tr>
-                                        <td>
-                                            <b><ABBR> Ini SH 0W 0Ff!!!!!!%$#^&*@ </AbbR></B>
-                                        </td>
-                                        </tr>
-                                        <th>
-                                        <td>
-                                        </td>
-                                        </th>
-                                    </TaBlE>
-                                </DIv>
-                            </DIv>
-                        </DIv>
-                    </div>
-                </diV>
-            </diV>
-          </diV>
-    </BOdY>
-</html    >
+        <p id="demo"></pq>
+    </body>
+</html>
 """)
