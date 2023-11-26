@@ -69,26 +69,35 @@ for line in lines:
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
 
 pda.start("""
-<html>
-<head> 
-  <title>Simple Webpage</title>
+<htMl>
+    <hEad> 
+        < tiTle >Simple Webpage< / title >
+        <link rEl = "fjdklf" hReF="Fjdkfl" />
+    </heAd>
+    < Body >
+        <dIv></div>
+        <taBle>
+            <TH> </TH>
+            <tR>
+                <tD></Td>
+            </Tr>
+        </table>
 
-</head>
-<body>
+        <Input TyPe="TeXT" / >
 
-<h2>HTML Forms</h2>
+        <H1> <Em> fjdklf </eM> </h1>
 
-<form action="/action_page.php" method="post">
-  <h5 class="label">First name:</h5><br>
-  <input type="text" id="fname"><br>
-  <h5 class="label">Last name:</h5><br>
-  <input type="text" id="lname"><br><br>
-  <button type="submit">Submit</button>
-</form> 
+        < fOrm >< / foRm >
+        < imG sRc="fdjsklf" Alt = "FJDLKF" />
 
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+        < sCriPt sRc = "fjsdlf" > < / scRIpt>
 
-</body>
+        < bUtton type="suBmit" ></buTTon>
+
+        <A href="fjkdlfj" iD="fjdk" ></a>
+
+        <HR/>
+    </body>
 </html>
 
 """)
