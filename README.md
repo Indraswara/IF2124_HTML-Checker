@@ -8,11 +8,11 @@
 
 
 ## Table of Contents
-* [Tentang Program](#tentang-program)
-* [Screenshots](#technologies-used)
+* [About Program](#tentang-program)
 * [Dependencies](#dependencies)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
+* [Configuration Format](#config)
 
 
 ## HTML Checker <a href="tentang-program"></a>
@@ -32,7 +32,7 @@ Program <strong> HTML Checker <strong>
 ## Setup <a href="setup"></a>
 1. Clone repository ini dengan 
     ```
-    git clone https://github.com/NopalAul/Algeo02-22013
+    git clone https://github.com/Indraswara/IF2124_HTML-Checker.git
     ```
 2. Di dalam direktori tersebut, buka terminal. Pastikan sudah tersedia file pda.txt dan file .html yang ingin dicek
 3. Jalankan program dengan
