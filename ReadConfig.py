@@ -75,6 +75,7 @@ pda.start("""
     <link rel="jfkdlfj" id="FJDKLF" />
   </head>
   <body> 
+    <input></input>
   </body>
 </html>
 
