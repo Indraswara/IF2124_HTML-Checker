@@ -69,13 +69,23 @@ for line in lines:
 pda = PDA(statePDA, inputPDA, stackPDA, startState, startStack, transition)
 
 pda.start("""
-<html>
-    <head>
-        <link rel="test" href="google.com"> 
-    </head>
-    <body>
-        <form id="fjkdslfj"    class="fjkds lfj" style="display: block" method="get" action="fjdslkfj" ></form>
-        <img src="fjdkslfj" id="FKDLF" class="jfdsl" />
-    </body>
+<html> 
+  <head> 
+    <title>Simple Webpage</title> 
+  </head>
+  <body> 
+    <!-- Bagian utama web -->
+    <h1>Hello, World!</h1>
+    <h2>Welcome to my page</h2>
+    <hr>
+    <img src="./welcome.jpeg" alt="Welcome Banner"> 
+    <p>This is a <em>simple</em> webpage.</p> 
+
+
+    <!-- Custom element -->
+    <div> This is the end of the page </div>
+  </body>
 </html>
+
+
 """)
