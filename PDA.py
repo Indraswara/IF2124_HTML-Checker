@@ -1,3 +1,5 @@
+from colorama import Fore, Style
+
 StatePDA = str 
 StackPDA = str
 AlphabetPDA = str
@@ -13,10 +15,7 @@ EPS = '\0'
 class PDA: 
     ids: list[ID] = []
 
-    def __init__ (self, states: list[str], input: list[str], stack: list[str], startState:str, startStack: str, transition: Transition): 
-        self.states = set(states)
-        self.stack = set(stack)
-        self.input = set(input)
+    def __init__ (self, startState:str, startStack: str, transition: Transition): 
         self.startState = startState  
         self.startStack = startStack
         self.transition = transition
@@ -53,7 +52,7 @@ class PDA:
         while len(self.ids) != 0:
             iteration += 1
 
-            if iteration % 100 == 0 and False:
+            if False:
                 print(iteration)
                 for [j, id] in enumerate(self.ids):
                     if j >= lastJobCount - 1:
@@ -109,9 +108,35 @@ class PDA:
             except:
                 ...
 
+        if count:
+            print(f"Character count\t\t\t: {count}")
+            print(f"Iteration count\t\t\t: {count}")
+            print(f"Itaration/Character Ratio\t: {(iteration * 100) // count}%")
+            print(f"Maximum ID count\t\t: {maxJob}\n")
+
         if found:
-            print("Found")
+            print(f"""{Fore.GREEN}
+ █████╗  ██████╗ ██████╗███████╗██████╗ ████████╗███████╗██████╗ 
+██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔══██╗
+███████║██║     ██║     █████╗  ██████╔╝   ██║   █████╗  ██║  ██║
+██╔══██║██║     ██║     ██╔══╝  ██╔═══╝    ██║   ██╔══╝  ██║  ██║
+██║  ██║╚██████╗╚██████╗███████╗██║        ██║   ███████╗██████╔╝
+╚═╝  ╚═╝ ╚═════╝ ╚═════╝╚══════╝╚═╝        ╚═╝   ╚══════╝╚═════╝ 
+        {Style.RESET_ALL}""")
         else:
+
+            print(f"""{Fore.RED}
+ ██▀███  ▓█████ ▄▄▄██▀▀▀▓█████  ▄████▄  ▄▄▄█████▓▓█████ ▓█████▄ 
+▓██ ▒ ██▒▓█   ▀   ▒██   ▓█   ▀ ▒██▀ ▀█  ▓  ██▒ ▓▒▓█   ▀ ▒██▀ ██▌
+▓██ ░▄█ ▒▒███     ░██   ▒███   ▒▓█    ▄ ▒ ▓██░ ▒░▒███   ░██   █▌
+▒██▀▀█▄  ▒▓█  ▄▓██▄██▓  ▒▓█  ▄ ▒▓▓▄ ▄██▒░ ▓██▓ ░ ▒▓█  ▄ ░▓█▄   ▌
+░██▓ ▒██▒░▒████▒▓███▒   ░▒████▒▒ ▓███▀ ░  ▒██▒ ░ ░▒████▒░▒████▓ 
+░ ▒▓ ░▒▓░░░ ▒░ ░▒▓▒▒░   ░░ ▒░ ░░ ░▒ ▒  ░  ▒ ░░   ░░ ▒░ ░ ▒▒▓  ▒ 
+  ░▒ ░ ▒░ ░ ░  ░▒ ░▒░    ░ ░  ░  ░  ▒       ░     ░ ░  ░ ░ ▒  ▒ 
+  ░░   ░    ░   ░ ░ ░      ░   ░          ░         ░    ░ ░  ░ 
+   ░        ░  ░░   ░      ░  ░░ ░                  ░  ░   ░    
+                               ░                         ░      
+            {Style.RESET_ALL}""")
             errorPoint = originalLen - lastParsedPositionFromBehind
             startLine = 0
             endLine = 0
@@ -129,8 +154,4 @@ class PDA:
             errorLine = originalInput[startLine:endLine]
             print(FAIL + errorLine.strip() + NORMAL)
             print(f"Error at line {lineCount + 1}")
-            print(startLine, endLine)
         
-        if count:
-            print(count, iteration, f"{(iteration * 100) // count}%", maxJob)
-
