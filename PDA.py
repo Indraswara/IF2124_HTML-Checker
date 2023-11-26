@@ -1,4 +1,5 @@
 from colorama import Fore, Style
+import time
 
 StatePDA = str 
 StackPDA = str
@@ -38,6 +39,7 @@ class PDA:
         self.ids.append(id)
     
     def start(self, input: InputPDA):
+        start = time.time()
         found = False
         originalInput = input
         originalLen = len(input)
@@ -112,7 +114,9 @@ class PDA:
             print(f"Character count\t\t\t: {count}")
             print(f"Iteration count\t\t\t: {count}")
             print(f"Itaration/Character Ratio\t: {(iteration * 100) // count}%")
-            print(f"Maximum ID count\t\t: {maxJob}\n")
+            print(f"Maximum ID count\t\t: {maxJob}")
+            execTime = format(time.time() - start, ".4f")
+            print(f"Execution time\t\t\t: {execTime}ms")
 
         if found:
             print(f"""{Fore.GREEN}
