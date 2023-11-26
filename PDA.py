@@ -1,3 +1,4 @@
+from colorama import Fore, Style
 
 StatePDA = str 
 StackPDA = str
@@ -5,6 +6,8 @@ AlphabetPDA = str
 InputPDA = str 
 
 ID = tuple[StatePDA, InputPDA, list[StackPDA]]
+FAIL = '\033[91m'
+NORMAL = '\033[0m'
 
 # Transition.get(state).get(input).get(stack) = {(state, stack)}
 Transition = dict[StatePDA, dict[AlphabetPDA, dict[StackPDA, list[tuple[StatePDA, list[StackPDA]]]]]]
@@ -12,10 +15,7 @@ EPS = '\0'
 class PDA: 
     ids: list[ID] = []
 
-    def __init__ (self, states: list[str], input: list[str], stack: list[str], startState:str, startStack: str, transition: Transition): 
-        self.states = set(states)
-        self.stack = set(stack)
-        self.input = set(input)
+    def __init__ (self, startState:str, startStack: str, transition: Transition): 
         self.startState = startState  
         self.startStack = startStack
         self.transition = transition
@@ -39,8 +39,12 @@ class PDA:
     
     def start(self, input: InputPDA):
         found = False
+        originalInput = input
+        originalLen = len(input)
         self.ids.append((self.startState, input, [self.startStack]))
         count = len(input)
+
+        lastParsedPositionFromBehind: int = 0
 
         maxJob = 0
         iteration = 0
@@ -48,7 +52,7 @@ class PDA:
         while len(self.ids) != 0:
             iteration += 1
 
-            if iteration % 100 == 0 or True: 
+            if False:
                 print(iteration)
                 for [j, id] in enumerate(self.ids):
                     if j >= lastJobCount - 1:
@@ -58,7 +62,7 @@ class PDA:
                     print("\t", end="")
                     print(j, id, end="")
                     print()
-                    break
+                    # break
                 lastJobCount = len(self.ids)
                 print()
 
@@ -66,6 +70,7 @@ class PDA:
                 maxJob = len(self.ids)
 
             [state, input, stack] = self.ids.pop(0)
+            lastParsedPositionFromBehind = len(input)
 
             if len(stack) == 0:
                 if len(input) == 0:
@@ -103,14 +108,50 @@ class PDA:
             except:
                 ...
 
-            if headInput == headStack and headStack in self.input:
-                self.pushJob((state, tailInput, tailStack))
-        
-        if found:
-            print("Found")
-        else:
-            print("Not found")
-        
         if count:
-            print(count, iteration, f"{(iteration * 100) // count}%", maxJob)
+            print(f"Character count\t\t\t: {count}")
+            print(f"Iteration count\t\t\t: {count}")
+            print(f"Itaration/Character Ratio\t: {(iteration * 100) // count}%")
+            print(f"Maximum ID count\t\t: {maxJob}\n")
 
+        if found:
+            print(f"""{Fore.GREEN}
+ █████╗  ██████╗ ██████╗███████╗██████╗ ████████╗███████╗██████╗ 
+██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔══██╗
+███████║██║     ██║     █████╗  ██████╔╝   ██║   █████╗  ██║  ██║
+██╔══██║██║     ██║     ██╔══╝  ██╔═══╝    ██║   ██╔══╝  ██║  ██║
+██║  ██║╚██████╗╚██████╗███████╗██║        ██║   ███████╗██████╔╝
+╚═╝  ╚═╝ ╚═════╝ ╚═════╝╚══════╝╚═╝        ╚═╝   ╚══════╝╚═════╝ 
+        {Style.RESET_ALL}""")
+        else:
+
+            print(f"""{Fore.RED}
+ ██▀███  ▓█████ ▄▄▄██▀▀▀▓█████  ▄████▄  ▄▄▄█████▓▓█████ ▓█████▄ 
+▓██ ▒ ██▒▓█   ▀   ▒██   ▓█   ▀ ▒██▀ ▀█  ▓  ██▒ ▓▒▓█   ▀ ▒██▀ ██▌
+▓██ ░▄█ ▒▒███     ░██   ▒███   ▒▓█    ▄ ▒ ▓██░ ▒░▒███   ░██   █▌
+▒██▀▀█▄  ▒▓█  ▄▓██▄██▓  ▒▓█  ▄ ▒▓▓▄ ▄██▒░ ▓██▓ ░ ▒▓█  ▄ ░▓█▄   ▌
+░██▓ ▒██▒░▒████▒▓███▒   ░▒████▒▒ ▓███▀ ░  ▒██▒ ░ ░▒████▒░▒████▓ 
+░ ▒▓ ░▒▓░░░ ▒░ ░▒▓▒▒░   ░░ ▒░ ░░ ░▒ ▒  ░  ▒ ░░   ░░ ▒░ ░ ▒▒▓  ▒ 
+  ░▒ ░ ▒░ ░ ░  ░▒ ░▒░    ░ ░  ░  ░  ▒       ░     ░ ░  ░ ░ ▒  ▒ 
+  ░░   ░    ░   ░ ░ ░      ░   ░          ░         ░    ░ ░  ░ 
+   ░        ░  ░░   ░      ░  ░░ ░                  ░  ░   ░    
+                               ░                         ░      
+            {Style.RESET_ALL}""")
+            errorPoint = originalLen - lastParsedPositionFromBehind
+            startLine = 0
+            endLine = 0
+            lineCount = 0
+            for i in range(0, errorPoint):
+                if originalInput[i] == '\n':
+                    startLine = i
+                    lineCount += 1
+                
+            for i in range(errorPoint, len(originalInput)):
+                if originalInput[i] == '\n':
+                    endLine = i
+                    break
+
+            errorLine = originalInput[startLine:endLine]
+            print(FAIL + errorLine.strip() + NORMAL)
+            print(f"Error at line {lineCount + 1}")
+        
